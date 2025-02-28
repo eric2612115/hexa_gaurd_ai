@@ -1,9 +1,32 @@
-// components/layout/PageHeader.js
+'use client';
+// components/layout/PageHeader.tsx
 import React from 'react';
 import { Box, Typography, Breadcrumbs, Link, Chip } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NextLink from 'next/link';
 
-export const PageHeader = ({ title, subtitle, breadcrumbs = [], action, chipLabel, chipColor }) => {
+interface BreadcrumbItem {
+  label: string;
+  href: string;
+}
+
+interface PageHeaderProps {
+  title: string;
+  subtitle?: string;
+  breadcrumbs?: BreadcrumbItem[];
+  action?: React.ReactNode;
+  chipLabel?: string;
+  chipColor?: 'default' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
+}
+
+export default function PageHeader({ 
+  title, 
+  subtitle, 
+  breadcrumbs = [], 
+  action, 
+  chipLabel, 
+  chipColor
+}: PageHeaderProps) {
   return (
     <Box 
       sx={{ 
@@ -55,6 +78,7 @@ export const PageHeader = ({ title, subtitle, breadcrumbs = [], action, chipLabe
                   key={index} 
                   underline="hover" 
                   color="inherit" 
+                  component={NextLink}
                   href={item.href}
                 >
                   {item.label}
@@ -72,5 +96,4 @@ export const PageHeader = ({ title, subtitle, breadcrumbs = [], action, chipLabe
       )}
     </Box>
   );
-};
-
+}

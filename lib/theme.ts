@@ -1,4 +1,4 @@
-// themes/theme.js
+// lib/theme.ts
 import { createTheme } from '@mui/material/styles';
 
 // 自定義深色主題與綠色主調
@@ -138,3 +138,5 @@ export const darkGreenTheme = createTheme({
     },
   },
 });
+
+export default darkGreenTheme;

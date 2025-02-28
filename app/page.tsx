@@ -1,101 +1,95 @@
-import Image from "next/image";
+// app/page.tsx
+import React from 'react';
+import { Typography, Box, Button } from '@mui/material';
+import DashboardLayout from '@/components/layout/DashboardLayout';
+import PageHeader from '@/components/layout/PageHeader';
+import { Card, CardContent, CardHeader, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import Link from 'next/link';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-export default function Home() {
+export default function DashboardPage() {
+  const faqData = [
+    {
+      question: "What is the function of the Wallet Management system?",
+      answer: "The Wallet Management system allows you to create, manage, and monitor your MPC wallets.",
+    },
+    {
+      question: "What is the function of the Transaction Signatures system?",
+      answer: "The Transaction Signatures system allows you to view, approve, and reject transaction requests.",
+    },
+    {
+      question: "What is the function of the Policy Management system?",
+      answer: "The Policy Management system allows you to create and manage policies to control access and spending limits.",
+    },
+  ];
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <DashboardLayout>
+      <PageHeader
+        title="Hexa Guard Wallet Management System"
+        subtitle="To manage and trace every transactions for AI MPC with Policies"
+      />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mb: 4 }}>
+        <Card sx={{ width: { xs: '100%', sm: 'calc(50% - 8px)', md: 'calc(33.33% - 16px)' } }}>
+          <CardHeader title="Wallet Management" />
+          <CardContent>
+            <Typography variant="body1" paragraph>
+              This is a wallet management system. It allows you to create, manage, and monitor your MPC wallets.
+            </Typography>
+            <Link href="/dashboard" passHref>
+              <Button variant="outlined" color="primary">
+                More
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+        <Card sx={{ width: { xs: '100%', sm: 'calc(50% - 8px)', md: 'calc(33.33% - 16px)' } }}>
+          <CardHeader title="Transaction Signatures" />
+          <CardContent>
+            <Typography variant="body1" paragraph>
+              This is a transaction management system. You can view, approve, and reject transaction requests.
+            </Typography>
+            <Link href="/transactions" passHref>
+              <Button variant="outlined" color="primary">
+                More
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+        <Card sx={{ width: { xs: '100%', sm: 'calc(50% - 8px)', md: 'calc(33.33% - 16px)' } }}>
+          <CardHeader title="Policies Management" />
+          <CardContent>
+            <Typography variant="body1" paragraph>
+              This is a policy management system. Create and manage policies to control access and spending limits.
+            </Typography>
+            <Link href="/policies" passHref>
+              <Button variant="outlined" color="primary">
+                More
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+      </Box>
+
+      {/* FAQ */}
+      <Box>
+        <Typography variant="h6" gutterBottom>FAQ</Typography> {/* FAQ 标题 */}
+        {faqData.map((item, index) => (
+          <Accordion key={index}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls={`panel${index + 1}a-content`}
+              id={`panel${index + 1}a-header`}
+            >
+              <Typography>{item.question}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>{item.answer}</Typography>
+            </AccordionDetails>
+          </Accordion>
+        ))}
+      </Box>
+    </DashboardLayout>
   );
 }
